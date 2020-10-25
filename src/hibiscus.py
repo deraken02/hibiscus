@@ -82,7 +82,6 @@ def after3(PIN,wfor,name,dyn):
             file.close()
         except FileNotFoundError:
             erreur("Le fichier n'existe pas ou n'est pas dans le dossier code")
-    os.chmod("../code/"+name,stat.S_IREAD)
     a=d.decode(PIN,name,wfor)
     try:
         a.decode()
