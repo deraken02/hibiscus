@@ -62,7 +62,7 @@ def obtenir(dyn):
     menu1=t.Button(dyn,padx=0, pady=0, width=25,text="Obtenir",command=lambda:after3(PIN.get(),wfor.get(),file.get(),dyn))
     menu1.grid(row=5,column=1)
     
-def after3(PIN,wfor,name,dyn):
+def after3(PIN,wfor,name,dyn,delet=False):
     """
     The treatment after decode and deleter
     """
@@ -92,25 +92,35 @@ def after3(PIN,wfor,name,dyn):
     dyn.grid(column=0,row=0) 
     res=a.getres().split('\n')
     res.remove('')
+    var=t.IntVar()
     for i in range(len(res)):
-        #ajouter parametre radio bouton etc si ca viens de deleter
+        rank=0
+        if delet:
+            w=t.Checkbutton(dyn,text=str(i+1),onvalue=i,variable=var)
+            w.grid(column=rank,row=i)
+            rank+=1
         tmp=final(res[i])
         txt=t.Label(dyn,text="Site ou logiciel")
-        txt.grid(column=0,row=i)
+        txt.grid(column=rank,row=i)
         txt=t.Label(dyn,text=tmp[0])
-        txt.grid(column=1,row=i)
+        txt.grid(column=rank+1,row=i)
         txt=t.Label(dyn,text="Email et/ou id")
-        txt.grid(column=2,row=i)
+        txt.grid(column=rank+2,row=i)
         id=t.Entry(dyn)
         id.insert(0,tmp[1])
-        id.grid(column=3,row=i)
+        id.grid(column=rank+3,row=i)
         txt=t.Label(dyn,text="Mot de passe")
-        txt.grid(column=4,row=i)
+        txt.grid(column=rank+4,row=i)
         id=t.Entry(dyn)
         id.insert(0,tmp[2])
-        id.grid(column=5,row=i)
+        id.grid(column=rank+5,row=i)
+    if delet:
+        b=t.Button(dyn,text="Supprimer",command=lambda:suppr(var.get(),res))
+        b.grid(column=3,row=i+1)
 
-
+def suppr(var,res):
+    print(res[var])
+    
 def password(entry):
     """
     Genere un mot de passe
@@ -163,42 +173,8 @@ def deleter(fenetre):
     file=t.Entry(fenetre,width=30)
     txt5.grid(row=4,column=0)
     file.grid(row=4,column=1)
-    menu1=t.Button(fenetre,padx=0, pady=0, width=25,text="Rechercher",command=lambda:after4(PIN.get(),wfor.get(),code.get(),mail.get(),file.get(),fenetre))
+    menu1=t.Button(fenetre,padx=0, pady=0, width=25,text="Rechercher",command=lambda:after3(PIN.get(),wfor.get(),file.get(),fenetre,True))
     menu1.grid(row=5,column=2)
-    
-def after4(PIN,wfor,code,mail,name,fenetre):
-    """
-    The treatment after the script deleter
-    :param PIN: (int) the pin code
-    :param wfor: (str) the name of the site and application
-    :param code: (str) the password
-    :param mail: (str) the mail or id
-    :param fenetre: (t.Tk) the current window
-    """
-    print("Traitement des données")
-    bool=True
-    other=True
-    try:
-        PIN=int(PIN)
-        PIN=key(PIN)
-    except ValueError:
-        erreur("Le code pin n'est pas un nombre")
-        bool=False
-
-    try:
-        file=open("../code/"+name,'rb')
-        file.close()
-    except FileNotFoundError:
-        try:
-            file=open("../code/"+name+".txt",'rb')
-            file.close()
-        except FileNotFoundError:
-            erreur("Le fichier n'existe pas ou n'est pas dans le dossier code")
-    if bool:
-        pop=t.Tk(className="Choix")
-        txt=t.Label(pop,text="En cours de création")
-        txt.pack()
-        t.mainloop()
         
 def generer(fenetre):
     """

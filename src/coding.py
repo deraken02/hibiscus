@@ -19,6 +19,12 @@ class coding:
         self.mail='identity:'+mail
         self.file=file
         
+    def getwfor(self):
+        return self.wfor
+    
+    def getmail(self):
+        return self.mail
+    
     def separation(self):
         """
         Return a tuple of to int who separate the pin
