@@ -1,0 +1,40 @@
+Manuel D'utilisation:
+
+Hibiscus est un gestionnaire de mot de passe, il permet de generer et stocker des mots de passe de maniere securisee
+
+------------------------
+Generer un mot de passe:
+------------------------
+
+Dans le menu se trouvant sur la droite de l'ecran, cliquez sur le bouton "Generer", un formulaire va apparaitre
+
+Rentrez l'email et/ou l'identifiant de connexion du site dans le premier encart
+
+Si vous voulez generer un mot de passe cliquez sur le bouton "Generer un mot de passe"
+une fenetre va s'ouvrir avec deux encarts:
+- dans le premier rentrez la longueur du mot de passe (de preference la plus longue acceptee sur le site ou logiciel)
+- dans le second rentrez tous les caracteres interdit sur le site ou logiciel
+Cliquez sur generer
+Un mot de passe va apparaitre dans le second encarts vous pouvez le copier sur le site ou logiciel souhaite
+
+Dans le troisieme encarts rentrez le nom du site ou logiciel
+
+Puis rentrez le code pin de 4 chiffres ou plus (ce code sera a retenir pour retrouver le mot de passe)
+
+Enfin dans le dernier encart rentrez le nom du fichier sur lequel vous souhaitez enregistrer les identifiants
+
+Cliquez sur "Enregistrer", si une fenetre d'erreur apparait modifier les informations demande, 
+sinon une fenetre va apparaitre si vous etes sur des informations rentrees cliquez sur "Oui"
+
+--------------------------
+Recuperer un mot de passe:
+--------------------------
+
+Dans le menu se trouvant sur la droite de l'ecran cliquez sur le bouton "Obtenir" un formulaire va apparaitre 
+
+Dans le premier encart rentrez le code pin
+
+Dans le second encart rentrez le site que vous voulez obtenir si vous voulez tout obtenir laissez le vide
+
+Dans le denier encart rentrez le nom du fichier ou se trouve le mot de passe (NB: mettre ce dit fichier dans le dossier 
+"code" ) 
