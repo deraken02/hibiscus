@@ -1,4 +1,5 @@
 import decode as d
+import delete as de
 import coding as c
 import tkinter as t
 import os, sys, stat
@@ -115,11 +116,12 @@ def after3(PIN,wfor,name,dyn,delet=False):
         id.insert(0,tmp[2])
         id.grid(column=rank+5,row=i)
     if delet:
-        b=t.Button(dyn,text="Supprimer",command=lambda:suppr(var.get(),res))
+        b=t.Button(dyn,text="Supprimer",command=lambda:suppr(var.get(),res,name,PIN))
         b.grid(column=3,row=i+1)
 
-def suppr(var,res):
-    print(res[var])
+def suppr(var,res,file,PIN):
+    a=de.delete(res[var],file,PIN)
+    a.main()
     
 def password(entry):
     """

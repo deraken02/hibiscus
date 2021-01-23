@@ -1,4 +1,4 @@
-import decode as d
+import binary_IO
 import coding as c
 
 class delete:
@@ -23,13 +23,15 @@ class delete:
         with open("../code/"+self.file,"rb") as f:
             filedescriptor=f.readlines()
             for i in filedescriptor:
-                listeligne+=[c for c in i]
-        with open("../code/"+self.file,"wb") as d:
-            suppr=self.deleter()
-            for i in listeligne:
-                print(i)
-                if i not in suppr:
-                    d.write(i)
+                listeligne.append([c for c in i])
+        w=open("../code/"+self.file,"wb") 
+        writer=binary_IO.Writer(stream=w)
+        suppr=self.deleter()
+        print(suppr)
+        for i in listeligne:
+            print(i)
+            if i not in suppr:
+                writer.write_bytes(i)
             
         
     def deleter(self):
@@ -67,5 +69,7 @@ class delete:
                     buff=ligne[car]
             if i!=2:
                 res.append(32)
+            else :
+                res.append(10)
                 
         return res
